@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Material - Lumiora Student Dashboard</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:linear-gradient(135deg,#f4f9ff,#eef5ff);
+    color:#222;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+header{
+    width:100%;
+    min-height:105px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 6%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    box-shadow:0 3px 15px rgba(0,0,0,.1);
+    border-bottom:4px solid #4f8cff;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo-area img{
+    width:75px;
+    height:75px;
+    object-fit:contain;
+    border-radius:15px;
+}
+
+.logo-text h1{
+    font-size:32px;
+    color:#3b6edc;
+    margin-bottom:4px;
+}
+
+.logo-text p{
+    font-size:14px;
+    color:#555;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:12px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#333;
+    font-size:16px;
+    font-weight:bold;
+    padding:10px 16px;
+    border-radius:8px;
+    transition:.3s;
+}
+
+nav a:hover{
+    background:#4f8cff;
+    color:white;
+    transform:translateY(-2px);
+}
+
+main{
+    flex:1;
+    width:100%;
+    padding-top:105px;
+}
+
+.dashboard{
+    max-width:1450px;
+    margin:35px auto;
+    padding:0 5%;
+    display:flex;
+    align-items:flex-start;
+    gap:25px;
+}
+
+.sidebar{
+    width:250px;
+    flex-shrink:0;
+    background:#1e3155;
+    color:white;
+    padding:25px 15px;
+    border-radius:18px;
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+    position:sticky;
+    top:130px;
+}
+
+.sidebar h2{
+    text-align:center;
+    font-size:24px;
+    margin-bottom:20px;
+    padding-bottom:15px;
+    border-bottom:1px solid rgba(255,255,255,.2);
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar li{
+    margin-bottom:7px;
+}
+
+.sidebar a{
+    display:block;
+    text-decoration:none;
+    color:#e8effa;
+    padding:13px 15px;
+    border-radius:9px;
+    font-size:15px;
+    transition:.3s;
+}
+
+.sidebar a:hover{
+    background:#4f8cff;
+    color:white;
+    transform:translateX(4px);
+}
+
+.sidebar li:nth-child(5) a{
+    background:#4f8cff;
+    color:white;
+}
+
+.content{
+    flex:1;
+    min-width:0;
+}
+
+.page-title{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    margin-bottom:25px;
+    box-shadow:0 7px 22px rgba(0,0,0,.08);
+    border-left:5px solid #4f8cff;
+}
+
+.page-title h1{
+    color:#315fc4;
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.page-title p{
+    color:#666;
+    font-size:15px;
+}
+
+.material-layout{
+    display:flex;
+    align-items:flex-start;
+    gap:25px;
+}
+
+.material-menu{
+    width:210px;
+    flex-shrink:0;
+    background:white;
+    border-radius:18px;
+    padding:25px 20px;
+    box-shadow:0 7px 22px rgba(0,0,0,.08);
+}
+
+.material-logo{
+    text-align:center;
+    margin-bottom:20px;
+}
+
+.material-logo img{
+    width:60px;
+    height:60px;
+    object-fit:contain;
+    margin-bottom:8px;
+}
+
+.material-logo h2{
+    color:#315fc4;
+    font-size:21px;
+}
+
+.material-menu details{
+    color:#333;
+}
+
+.material-menu summary{
+    color:#315fc4;
+    cursor:pointer;
+    font-size:16px;
+    padding:10px 5px;
+}
+
+.material-menu p{
+    padding:8px 10px;
+    margin:3px 0;
+    color:#555;
+    border-radius:6px;
+    font-size:14px;
+    transition:.3s;
+}
+
+.material-menu p:hover{
+    background:#d9eafd;
+    color:#315fc4;
+}
+
+.material-cards{
+    flex:1;
+    background:white;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 7px 22px rgba(0,0,0,.08);
+}
+
+.material-cards h2{
+    color:#315fc4;
+    font-size:22px;
+    margin-bottom:8px;
+    padding-bottom:12px;
+    border-bottom:2px solid #d9eafd;
+}
+
+.material-cards>p{
+    color:#666;
+    font-size:14px;
+    margin-bottom:22px;
+}
+
+.material-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.material-card{
+    min-height:130px;
+    background:#f8fbff;
+    border:1px solid #dce8f7;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:25px;
+    transition:.3s;
+}
+
+.material-card:hover{
+    background:#eef6ff;
+    border-color:#4f8cff;
+    transform:translateY(-4px);
+    box-shadow:0 8px 18px rgba(79,140,255,.15);
+}
+
+.material-card a{
+    text-decoration:none;
+    color:#222;
+    font-size:15px;
+    line-height:1.5;
+}
+
+.material-card a b{
+    color:#315fc4;
+}
+
+footer{
+    width:100%;
+    background:#1e3155;
+    color:white;
+    padding:35px 6% 20px;
+    margin-top:auto;
+}
+
+.footer{
+    max-width:1200px;
+    margin:auto;
+    text-align:center;
+}
+
+.footer h2{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.footer p{
+    color:#dce6f7;
+    font-size:14px;
+}
+
+@media(max-width:1000px){
+    .dashboard{
+        padding:0 4%;
+        gap:20px;
+    }
+
+    .sidebar{
+        width:220px;
+    }
+
+    .logo-text h1{
+        font-size:28px;
+    }
+
+    nav{
+        gap:5px;
+    }
+
+    nav a{
+        padding:8px 10px;
+        font-size:14px;
+    }
+
+    .material-layout{
+        gap:20px;
+    }
+
+    .material-menu{
+        width:190px;
+    }
+}
+
+@media(max-width:700px){
+    header{
+        min-height:180px;
+        flex-direction:column;
+        justify-content:center;
+        gap:12px;
+        text-align:center;
+        padding:10px 20px;
+    }
+
+    .logo-area{
+        flex-direction:column;
+        gap:5px;
+    }
+
+    .logo-area img{
+        width:60px;
+        height:60px;
+    }
+
+    .logo-text h1{
+        font-size:25px;
+    }
+
+    .logo-text p{
+        font-size:11px;
+    }
+
+    nav{
+        width:100%;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:5px;
+    }
+
+    nav a{
+        font-size:13px;
+        padding:7px 10px;
+    }
+
+    main{
+        padding-top:180px;
+    }
+
+    .dashboard{
+        flex-direction:column;
+        padding:20px;
+        margin:15px auto;
+        gap:20px;
+    }
+
+    .sidebar{
+        width:100%;
+        position:static;
+        padding:20px 15px;
+    }
+
+    .sidebar ul{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:6px;
+    }
+
+    .sidebar li{
+        margin-bottom:0;
+    }
+
+    .sidebar a{
+        font-size:13px;
+        padding:11px 8px;
+        text-align:center;
+    }
+
+    .page-title{
+        padding:22px 18px;
+    }
+
+    .page-title h1{
+        font-size:24px;
+    }
+
+    .material-layout{
+        flex-direction:column;
+    }
+
+    .material-menu{
+        width:100%;
+    }
+
+    .material-cards{
+        width:100%;
+        padding:18px 12px;
+    }
+
+    .material-cards h2{
+        font-size:20px;
+    }
+
+    .material-grid{
+        grid-template-columns:1fr;
+        gap:15px;
+    }
+}
+
+@media(max-width:400px){
+    header{
+        min-height:175px;
+    }
+
+    main{
+        padding-top:175px;
+    }
+
+    .logo-area img{
+        width:55px;
+        height:55px;
+    }
+
+    .logo-text h1{
+        font-size:23px;
+    }
+
+    nav{
+        gap:3px;
+    }
+
+    nav a{
+        padding:6px 8px;
+        font-size:12px;
+    }
+
+    .dashboard{
+        padding:15px 12px;
+    }
+
+    .sidebar ul{
+        grid-template-columns:1fr;
+    }
+
+    .material-card{
+        min-height:110px;
+        padding:18px;
+    }
+
+    .material-card a{
+        font-size:13px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo-area">
+
+        <img src="logo.png" alt="Lumiora Logo">
+
+        <div class="logo-text">
+            <h1>Lumiora</h1>
+            <p><b>Light + Growth = Learning with Brilliance</b></p>
+        </div>
+
+    </div>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="profile.html">Profile</a>
+        <a href="logout.html">Logout</a>
+    </nav>
+
+</header>
+
+<main>
+
+    <div class="dashboard">
+
+        <aside class="sidebar">
+
+            <h2>Menu</h2>
+
+            <ul>
+                <li><a href="dashboard.html">🏠 Dashboard</a></li>
+                <li><a href="profile.html">👤 Profile</a></li>
+                <li><a href="timetable.html">📅 Time Table</a></li>
+                <li><a href="attendance.html">✅ Attendance</a></li>
+                <li><a href="studymaterial.html">📚 Study Material</a></li>
+                <li><a href="planner.html">📝 Study Planner</a></li>
+                <li><a href="helpdesk.html">🎧 Help Desk</a></li>
+                <li><a href="logout.html">🚪 Logout</a></li>
+            </ul>
+
+        </aside>
+
+        <section class="content">
+
+            <div class="page-title">
+
+                <h1>📚 Study Material</h1>
+
+                <p>
+                    Access your semester-wise study materials and subject resources.
+                </p>
+
+            </div>
+
+            <div class="material-layout">
+
+                <div class="material-menu">
+
+                    <div class="material-logo">
+
+                        <img src="logo.png" alt="Lumiora Logo">
+
+                        <h2>Materials</h2>
+
+                    </div>
+
+                    <details open>
+
+                        <summary><b>3rd Semester</b></summary>
+
+                        <p>OOP</p>
+                        <p>DSA</p>
+                        <p>DM</p>
+                        <p>WDF</p>
+                        <p>DCN</p>
+                        <p>CPI</p>
+
+                    </details>
+
+                </div>
+
+                <div class="material-cards">
+
+                    <h2>📖 Subject Materials</h2>
+
+                    <p>
+                        Select a subject to view its study material.
+                    </p>
+
+                    <div class="material-grid">
+
+                        <div class="material-card">
+
+                            <a href="oop.html">
+                                <b>OOP : Object Oriented Programming</b>
+                            </a>
+
+                        </div>
+
+                        <div class="material-card">
+
+                            <a href="dm.html">
+                                <b>DM : Discrete Mathematics</b>
+                            </a>
+
+                        </div>
+
+                        <div class="material-card">
+
+                            <a href="fdsa.html">
+                                <b>FDSA : Fundamentals of Data Structures and Algorithms</b>
+                            </a>
+
+                        </div>
+
+                        <div class="material-card">
+
+                            <a href="wdf.html">
+                                <b>WDF : Web Development Framework</b>
+                            </a>
+
+                        </div>
+
+                        <div class="material-card">
+
+                            <a href="fcn.html">
+                                <b>FCN : Fundamentals of Computer Networks</b>
+                            </a>
+
+                        </div>
+
+                        <div class="material-card">
+
+                            <a href="cpi.html">
+                                <b>CPI : Creativity, Problem Solving and Innovation</b>
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+<footer>
+
+    <div class="footer">
+
+        <h2>Lumiora</h2>
+
+        <p>
+            © 2026 Lumiora. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+
+</html>

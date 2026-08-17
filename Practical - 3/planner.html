@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Planner - Lumiora Student Dashboard</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:linear-gradient(135deg,#f4f9ff,#eef5ff);
+    color:#222;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+header{
+    width:100%;
+    min-height:105px;
+    background:white;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:12px 6%;
+    position:fixed;
+    top:0;
+    left:0;
+    z-index:1000;
+    box-shadow:0 3px 15px rgba(0,0,0,.1);
+    border-bottom:4px solid #4f8cff;
+}
+
+.logo-area{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+.logo-area img{
+    width:75px;
+    height:75px;
+    object-fit:contain;
+    border-radius:15px;
+}
+
+.logo-text h1{
+    font-size:32px;
+    color:#3b6edc;
+    margin-bottom:4px;
+}
+
+.logo-text p{
+    font-size:14px;
+    color:#555;
+}
+
+nav{
+    display:flex;
+    align-items:center;
+    justify-content:flex-end;
+    gap:12px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#333;
+    font-size:16px;
+    font-weight:bold;
+    padding:10px 16px;
+    border-radius:8px;
+    transition:.3s;
+}
+
+nav a:hover{
+    background:#4f8cff;
+    color:white;
+    transform:translateY(-2px);
+}
+
+main{
+    flex:1;
+    width:100%;
+    padding-top:105px;
+}
+
+.dashboard{
+    max-width:1450px;
+    margin:35px auto;
+    padding:0 5%;
+    display:flex;
+    align-items:flex-start;
+    gap:25px;
+}
+
+.sidebar{
+    width:250px;
+    flex-shrink:0;
+    background:#1e3155;
+    color:white;
+    padding:25px 15px;
+    border-radius:18px;
+    box-shadow:0 8px 25px rgba(0,0,0,.12);
+    position:sticky;
+    top:130px;
+}
+
+.sidebar h2{
+    text-align:center;
+    font-size:24px;
+    margin-bottom:20px;
+    padding-bottom:15px;
+    border-bottom:1px solid rgba(255,255,255,.2);
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar li{
+    margin-bottom:7px;
+}
+
+.sidebar a{
+    display:block;
+    text-decoration:none;
+    color:#e8effa;
+    padding:13px 15px;
+    border-radius:9px;
+    font-size:15px;
+    transition:.3s;
+}
+
+.sidebar a:hover{
+    background:#4f8cff;
+    color:white;
+    transform:translateX(4px);
+}
+
+.sidebar li:nth-child(6) a{
+    background:#4f8cff;
+    color:white;
+}
+
+.content{
+    flex:1;
+    min-width:0;
+}
+
+.page-title{
+    background:white;
+    padding:25px;
+    border-radius:18px;
+    margin-bottom:25px;
+    box-shadow:0 7px 22px rgba(0,0,0,.08);
+    border-left:5px solid #4f8cff;
+}
+
+.page-title h1{
+    color:#315fc4;
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+.page-title p{
+    color:#666;
+    font-size:15px;
+}
+
+.table-card{
+    background:white;
+    border-radius:18px;
+    padding:25px;
+    margin-bottom:25px;
+    box-shadow:0 7px 22px rgba(0,0,0,.08);
+    overflow-x:auto;
+}
+
+.table-card h2{
+    color:#315fc4;
+    font-size:22px;
+    margin-bottom:8px;
+    padding-bottom:12px;
+    border-bottom:2px solid #d9eafd;
+}
+
+.table-card>p{
+    color:#666;
+    font-size:14px;
+    margin-bottom:20px;
+}
+
+.planner-table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:700px;
+}
+
+.planner-table th{
+    background:#d9eafd;
+    color:#315fc4;
+    padding:14px 12px;
+    text-align:left;
+    font-size:14px;
+}
+
+.planner-table td{
+    padding:13px 12px;
+    border-bottom:1px solid #e5eaf2;
+    font-size:14px;
+    color:#555;
+}
+
+.planner-table tr:hover td{
+    background:#f5f9ff;
+}
+
+.date-cell{
+    text-align:center;
+    font-weight:bold;
+    color:#315fc4 !important;
+    line-height:1.5;
+}
+
+.status{
+    font-weight:bold;
+    padding:6px 12px;
+    border-radius:20px;
+    display:inline-block;
+}
+
+.pending{
+    background:#fff1cc;
+    color:#b77900;
+}
+
+.progress{
+    background:#d9eafd;
+    color:#315fc4;
+}
+
+.view-link{
+    text-align:center;
+    margin-top:20px;
+}
+
+.view-link a{
+    display:inline-block;
+    text-decoration:none;
+    background:#4f8cff;
+    color:white;
+    padding:11px 20px;
+    border-radius:8px;
+    font-weight:bold;
+    font-size:14px;
+    transition:.3s;
+}
+
+.view-link a:hover{
+    background:#315fc4;
+    transform:translateY(-2px);
+}
+
+footer{
+    width:100%;
+    background:#1e3155;
+    color:white;
+    padding:35px 6% 20px;
+    margin-top:auto;
+}
+
+.footer{
+    max-width:1200px;
+    margin:auto;
+    text-align:center;
+}
+
+.footer h2{
+    font-size:28px;
+    margin-bottom:10px;
+}
+
+.footer p{
+    color:#dce6f7;
+    font-size:14px;
+}
+
+@media(max-width:1000px){
+    .dashboard{
+        padding:0 4%;
+        gap:20px;
+    }
+
+    .sidebar{
+        width:220px;
+    }
+
+    .logo-text h1{
+        font-size:28px;
+    }
+
+    nav{
+        gap:5px;
+    }
+
+    nav a{
+        padding:8px 10px;
+        font-size:14px;
+    }
+}
+
+@media(max-width:700px){
+    header{
+        min-height:180px;
+        flex-direction:column;
+        justify-content:center;
+        gap:12px;
+        text-align:center;
+        padding:10px 20px;
+    }
+
+    .logo-area{
+        flex-direction:column;
+        gap:5px;
+    }
+
+    .logo-area img{
+        width:60px;
+        height:60px;
+    }
+
+    .logo-text h1{
+        font-size:25px;
+    }
+
+    .logo-text p{
+        font-size:11px;
+    }
+
+    nav{
+        width:100%;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:5px;
+    }
+
+    nav a{
+        font-size:13px;
+        padding:7px 10px;
+    }
+
+    main{
+        padding-top:180px;
+    }
+
+    .dashboard{
+        flex-direction:column;
+        padding:20px;
+        margin:15px auto;
+        gap:20px;
+    }
+
+    .sidebar{
+        width:100%;
+        position:static;
+        padding:20px 15px;
+    }
+
+    .sidebar ul{
+        display:grid;
+        grid-template-columns:repeat(2,1fr);
+        gap:6px;
+    }
+
+    .sidebar li{
+        margin-bottom:0;
+    }
+
+    .sidebar a{
+        font-size:13px;
+        padding:11px 8px;
+        text-align:center;
+    }
+
+    .page-title{
+        padding:22px 18px;
+    }
+
+    .page-title h1{
+        font-size:24px;
+    }
+
+    .table-card{
+        padding:18px 12px;
+    }
+
+    .table-card h2{
+        font-size:20px;
+    }
+}
+
+@media(max-width:400px){
+    header{
+        min-height:175px;
+    }
+
+    main{
+        padding-top:175px;
+    }
+
+    .logo-area img{
+        width:55px;
+        height:55px;
+    }
+
+    .logo-text h1{
+        font-size:23px;
+    }
+
+    nav{
+        gap:3px;
+    }
+
+    nav a{
+        padding:6px 8px;
+        font-size:12px;
+    }
+
+    .dashboard{
+        padding:15px 12px;
+    }
+
+    .sidebar ul{
+        grid-template-columns:1fr;
+    }
+
+    .planner-table{
+        font-size:12px;
+    }
+
+    .planner-table th,
+    .planner-table td{
+        padding:10px 8px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo-area">
+
+        <img src="logo.png" alt="Lumiora Logo">
+
+        <div class="logo-text">
+            <h1>Lumiora</h1>
+            <p><b>Light + Growth = Learning with Brilliance</b></p>
+        </div>
+
+    </div>
+
+    <nav>
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="profile.html">Profile</a>
+        <a href="logout.html">Logout</a>
+    </nav>
+
+</header>
+
+<main>
+
+    <div class="dashboard">
+
+        <aside class="sidebar">
+
+            <h2>Menu</h2>
+
+            <ul>
+                <li><a href="dashboard.html">🏠 Dashboard</a></li>
+                <li><a href="profile.html">👤 Profile</a></li>
+                <li><a href="timetable.html">📅 Time Table</a></li>
+                <li><a href="attendance.html">✅ Attendance</a></li>
+                <li><a href="studymaterial.html">📚 Study Material</a></li>
+                <li><a href="planner.html">📝 Study Planner</a></li>
+                <li><a href="helpdesk.html">🎧 Help Desk</a></li>
+                <li><a href="logout.html">🚪 Logout</a></li>
+            </ul>
+
+        </aside>
+
+        <section class="content">
+
+            <div class="page-title">
+
+                <h1>📝 Study Planner</h1>
+
+                <p>
+                    Plan your exams, assignments and academic activities.
+                </p>
+
+            </div>
+
+            <div class="table-card">
+
+                <h2>📅 Exam Schedule</h2>
+
+                <p>Upcoming exams and test dates</p>
+
+                <table class="planner-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Date</th>
+                            <th>Exam</th>
+                            <th>Subject</th>
+                            <th>Time</th>
+                            <th>Marks (out of 20)</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td class="date-cell">01<br>AUG</td>
+                            <td>Unit Test - 1</td>
+                            <td>Data Structures</td>
+                            <td>10:00 AM - 11:00 AM</td>
+                            <td>
+                                <span class="status pending">Pending</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="date-cell">02<br>AUG</td>
+                            <td>Unit Test - 4</td>
+                            <td>Discrete Mathematics</td>
+                            <td>09:00 AM - 10:00 AM</td>
+                            <td>
+                                <span class="status pending">Pending</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="date-cell">03<br>AUG</td>
+                            <td>Unit Test - 1 and 2</td>
+                            <td>OOP</td>
+                            <td>09:00 AM - 10:00 AM</td>
+                            <td>
+                                <span class="status pending">Pending</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="date-cell">04<br>AUG</td>
+                            <td>Unit Test - 1</td>
+                            <td>Computer Network</td>
+                            <td>09:00 AM - 10:00 AM</td>
+                            <td>
+                                <span class="status pending">Pending</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="date-cell">05<br>AUG</td>
+                            <td>HTML and JS</td>
+                            <td>Web Development</td>
+                            <td>10:00 AM - 11:00 AM</td>
+                            <td>
+                                <span class="status pending">Pending</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+                <div class="view-link">
+                    <a href="exam_schedule.html">
+                        View Full Exam Schedule
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="table-card">
+
+                <h2>📚 Assignment Schedule</h2>
+
+                <p>Track your assignment deadlines</p>
+
+                <table class="planner-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Date Due</th>
+                            <th>Assignment</th>
+                            <th>Subject</th>
+                            <th>Status</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td class="date-cell">28<br>JUL</td>
+                            <td>Array Implementation Program</td>
+                            <td>Data Structures</td>
+                            <td>
+                                <span class="status progress">
+                                    In Progress
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="date-cell">01<br>AUG</td>
+                            <td>Tutorial</td>
+                            <td>Discrete Mathematics</td>
+                            <td>
+                                <span class="status pending">
+                                    Pending
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="date-cell">08<br>AUG</td>
+                            <td>OOP Concepts Assignment</td>
+                            <td>OOP</td>
+                            <td>
+                                <span class="status progress">
+                                    In Progress
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="date-cell">14<br>AUG</td>
+                            <td>Mini Project Report</td>
+                            <td>Creativity</td>
+                            <td>
+                                <span class="status pending">
+                                    Pending
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="date-cell">22<br>AUG</td>
+                            <td>Leetcode Problem</td>
+                            <td>Programming</td>
+                            <td>
+                                <span class="status pending">
+                                    Pending
+                                </span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+                <div class="view-link">
+                    <a href="assignment_schedule.html">
+                        View Full Assignment Schedule
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+<footer>
+
+    <div class="footer">
+
+        <h2>Lumiora</h2>
+
+        <p>
+            © 2026 Lumiora. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+</body>
+
+</html>
