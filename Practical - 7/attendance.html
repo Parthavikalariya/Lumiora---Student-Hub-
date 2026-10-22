@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Attendance - Lumiora Student Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="page-attendance">
+
+<header>
+
+    <div class="logo-area">
+        <img src="logo.png" alt="Lumiora Logo">
+
+        <div class="logo-text">
+            <h1>Lumiora</h1>
+            <p><b>Light + Growth = Learning with Brilliance</b></p>
+        </div>
+    </div>
+
+    <nav id="navbar">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="profile.html">Profile</a>
+        <a href="login.html">Login</a>
+    </nav>
+
+    <button id="themeToggle" class="theme-toggle"> 🌙 Dark Mode </button>
+    <button id="hamburger" class="hamburger"> ☰ </button>
+
+</header>
+
+<main>
+    <div class="dashboard">
+
+        <aside class="sidebar">
+            <h2>Menu</h2>
+
+            <ul>
+                <li><a href="dashboard.html">🏠 Dashboard</a></li>
+                <li><a href="profile.html">👤 Profile</a></li>
+                <li><a href="timetable.html">📅 Time Table</a></li>
+                <li><a href="attendance.html">✅ Attendance</a></li>
+                <li><a href="event.html">🎤 Events</a></li>
+                <li><a href="studymaterial.html">📚 Study Material</a></li>
+                <li><a href="planner.html">📝 Study Planner</a></li>
+                <li><a href="helpdesk.html">🎧 Help Desk</a></li>
+                <li><a href="logout.html">🚪 Logout</a></li>
+            </ul>
+        </aside>
+
+        <section class="content">
+
+            <div class="page-title">
+                <h1>📊 Attendance</h1>
+                <p>Track your subject-wise lecture and laboratory attendance.</p>
+            </div>
+
+            <div class="attendance-summary">
+                <div class="summary-text">
+                    <h2>◕ Lecture Gross Attendance</h2>
+
+                    <p>
+                        Your overall attendance for
+                        <b>Semester 3</b> is currently
+                        <b>95%</b>.
+                    </p>
+
+                    <p>
+                        Keep attending your lectures regularly
+                        to maintain good academic attendance.
+                    </p>
+                </div>
+
+                <div class="percentage-circle">
+                    <strong>95%</strong>
+                    <span>Overall</span>
+                </div>
+            </div>
+
+            <div class="table-card">
+                <h2>📋 Subject-wise Attendance</h2>
+
+                <table class="attendance-table">
+                    <thead>
+                        <tr>
+                            <th>Course</th>
+                            <th>Class Type</th>
+                            <th>Present / Total</th>
+                            <th>Percentage</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>CEUE203 / OOP</td>
+                            <td>LECT</td>
+                            <td>3 / 4</td>
+                            <td><span class="percentage average">75%</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>CEUE203 / OOP</td>
+                            <td>LAB</td>
+                            <td>2 / 2</td>
+                            <td><span class="percentage good">100%</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>CSUC201 / FDSA</td>
+                            <td>LECT</td>
+                            <td>4 / 4</td>
+                            <td><span class="percentage good">100%</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>CSUC201 / FDSA</td>
+                            <td>LAB</td>
+                            <td>2 / 2</td>
+                            <td><span class="percentage good">100%</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>HSUV201 / CPI</td>
+                            <td>LECT</td>
+                            <td>4 / 4</td>
+                            <td><span class="percentage good">100%</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>ITUC201 / FCN</td>
+                            <td>LECT</td>
+                            <td>3 / 3</td>
+                            <td><span class="percentage good">100%</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>ITUC201 / FCN</td>
+                            <td>LAB</td>
+                            <td>0 / 0</td>
+                            <td><span class="percentage low">0%</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>ITUE203 / WDF</td>
+                            <td>LECT</td>
+                            <td>2 / 2</td>
+                            <td><span class="percentage good">100%</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>ITUE203 / WDF</td>
+                            <td>LAB</td>
+                            <td>0 / 0</td>
+                            <td><span class="percentage low">0%</span></td>
+                        </tr>
+
+                        <tr>
+                            <td>MSUD203 / DM</td>
+                            <td>LECT</td>
+                            <td>6 / 6</td>
+                            <td><span class="percentage good">100%</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-card">
+                <h2>📚 Course Information</h2>
+
+                <table class="course-table">
+                    <thead>
+                        <tr>
+                            <th>Course Code</th>
+                            <th>Course Name</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td>CEUE203 / OOP</td>
+                            <td>OBJECT ORIENTED PROGRAMMING</td>
+                        </tr>
+
+                        <tr>
+                            <td>CSUC201 / FDSA</td>
+                            <td>FUNDAMENTALS OF DATA STRUCTURE AND ALGORITHMS</td>
+                        </tr>
+
+                        <tr>
+                            <td>HSUV201 / CPI</td>
+                            <td>CREATIVITY, PROBLEM SOLVING AND INNOVATION</td>
+                        </tr>
+
+                        <tr>
+                            <td>ITUC201 / FCN</td>
+                            <td>FUNDAMENTALS OF COMPUTER NETWORKS</td>
+                        </tr>
+
+                        <tr>
+                            <td>ITUE203 / WDF</td>
+                            <td>WEB DEVELOPMENT FRAMEWORKS</td>
+                        </tr>
+
+                        <tr>
+                            <td>MSUD203 / DM</td>
+                            <td>DISCRETE MATHEMATICS</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+    </div>
+</main>
+
+<footer>
+    <div class="footer">
+        <h2>Lumiora</h2>
+        <p>© 2026 Lumiora. All Rights Reserved.</p>
+    </div>
+</footer>
+     <script src="script.js"></script>
+</body>
+</html>
