@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Study Planner - Lumiora Student Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="page-planner">
+
+<header>
+
+    <div class="logo-area">
+        <img src="logo.png" alt="Lumiora Logo">
+
+        <div class="logo-text">
+            <h1>Lumiora</h1>
+            <p><b>Light + Growth = Learning with Brilliance</b></p>
+        </div>
+    </div>
+
+    <nav id="navbar">
+        <a href="home.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="profile.html">Profile</a>
+        <a href="login.html">Login</a>
+    </nav>
+
+    <button id="themeToggle" class="theme-toggle"> 🌙 Dark Mode </button>
+    <button id="hamburger" class="hamburger"> ☰ </button>
+
+</header>
+
+<main>
+    
+    <div class="dashboard">
+
+        <aside class="sidebar">
+
+            <h2>Menu</h2>
+
+            <ul>
+                <li><a href="student-dashboard.php">🏠 Dashboard</a></li>
+                <li><a href="profile.html">👤 Profile</a></li>
+                <li><a href="timetable.html">📅 Time Table</a></li>
+                <li><a href="attendance.html">✅ Attendance</a></li>
+                <li><a href="event.html">🎤 Events</a></li>
+                <li><a href="studymaterial.html">📚 Study Material</a></li>
+                <li><a href="planner.html">📝 Study Planner</a></li>
+                <li><a href="helpdesk.html">🎧 Help Desk</a></li>
+                <li><a href="logout.html">🚪 Logout</a></li>
+            </ul>
+
+        </aside>
+
+        <section class="content">
+
+            <div class="page-title">
+
+                <h1>📝 Study Planner</h1>
+
+                <p>
+                    Plan your exams, assignments and academic activities.
+                </p>
+
+            </div>
+
+            <div class="table-card">
+
+                <h2>📅 Exam Schedule</h2>
+
+                <p>Upcoming exams and test dates</p>
+
+                <table class="planner-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Date</th>
+                            <th>Exam</th>
+                            <th>Subject</th>
+                            <th>Time</th>
+                            <th>Marks (out of 20)</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td class="date-cell">01<br>AUG</td>
+                            <td>Unit Test - 1</td>
+                            <td>Data Structures</td>
+                            <td>10:00 AM - 11:00 AM</td>
+                            <td>
+                                <span class="status pending">Pending</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="date-cell">02<br>AUG</td>
+                            <td>Unit Test - 4</td>
+                            <td>Discrete Mathematics</td>
+                            <td>09:00 AM - 10:00 AM</td>
+                            <td>
+                                <span class="status pending">Pending</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="date-cell">03<br>AUG</td>
+                            <td>Unit Test - 1 and 2</td>
+                            <td>OOP</td>
+                            <td>09:00 AM - 10:00 AM</td>
+                            <td>
+                                <span class="status pending">Pending</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="date-cell">04<br>AUG</td>
+                            <td>Unit Test - 1</td>
+                            <td>Computer Network</td>
+                            <td>09:00 AM - 10:00 AM</td>
+                            <td>
+                                <span class="status pending">Pending</span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="date-cell">05<br>AUG</td>
+                            <td>HTML and JS</td>
+                            <td>Web Development</td>
+                            <td>10:00 AM - 11:00 AM</td>
+                            <td>
+                                <span class="status pending">Pending</span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+                <div class="view-link">
+                    <a href="exam_schedule.html">
+                        View Full Exam Schedule
+                    </a>
+                </div>
+
+            </div>
+
+            <div class="table-card">
+
+                <h2>📚 Assignment Schedule</h2>
+
+                <p>Track your assignment deadlines</p>
+
+                <table class="planner-table">
+
+                    <thead>
+
+                        <tr>
+                            <th>Date Due</th>
+                            <th>Assignment</th>
+                            <th>Subject</th>
+                            <th>Status</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td class="date-cell">28<br>JUL</td>
+                            <td>Array Implementation Program</td>
+                            <td>Data Structures</td>
+                            <td>
+                                <span class="status progress">
+                                    In Progress
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="date-cell">01<br>AUG</td>
+                            <td>Tutorial</td>
+                            <td>Discrete Mathematics</td>
+                            <td>
+                                <span class="status pending">
+                                    Pending
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="date-cell">08<br>AUG</td>
+                            <td>OOP Concepts Assignment</td>
+                            <td>OOP</td>
+                            <td>
+                                <span class="status progress">
+                                    In Progress
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="date-cell">14<br>AUG</td>
+                            <td>Mini Project Report</td>
+                            <td>Creativity</td>
+                            <td>
+                                <span class="status pending">
+                                    Pending
+                                </span>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="date-cell">22<br>AUG</td>
+                            <td>Leetcode Problem</td>
+                            <td>Programming</td>
+                            <td>
+                                <span class="status pending">
+                                    Pending
+                                </span>
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+                <div class="view-link">
+                    <a href="assignment_schedule.html">
+                        View Full Assignment Schedule
+                    </a>
+                </div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+</main>
+
+<footer>
+
+    <div class="footer">
+
+        <h2>Lumiora</h2>
+
+        <p>
+            © 2026 Lumiora. All Rights Reserved.
+        </p>
+
+    </div>
+
+</footer>
+     <script src="script.js"></script>
+
+</body>
+
+</html>
