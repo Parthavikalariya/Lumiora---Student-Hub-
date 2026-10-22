@@ -1,0 +1,28 @@
+/* Event Management UI, adapted from the existing Lumiora dark theme. */
+*{box-sizing:border-box}body{margin:0;background:#0b1120;color:#eaf2ff;font:15px/1.5 Arial,Helvetica,sans-serif}a{color:#9cddff}button,input,select{font:inherit}button,.btn{background:#80cbe8;color:#0b2232;border:0;border-radius:9px;padding:9px 14px;cursor:pointer;font-weight:700;text-decoration:none;display:inline-block}.btn.secondary,button.secondary{background:#314259;color:#eef8ff}.btn.danger,button.danger{background:#f6a6a3;color:#3d1010}.btn.warning{background:#f5d18c;color:#392500}.btn.small,button.small{padding:6px 9px;font-size:13px}button:hover,.btn:hover{filter:brightness(1.12)}.shell{max-width:1190px;margin:30px auto;padding:0 22px 45px}.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.panel{background:#192339;border:1px solid #334460;border-radius:15px;padding:20px;margin-top:18px}.hero{background:linear-gradient(115deg,#28375c,#244963);border-radius:15px;padding:24px;margin-top:15px}.hero h1{margin:0;font-size:26px}.hero p{color:#d4e6fc;margin:7px 0 0}.toolbar-links{display:flex;gap:10px;flex-wrap:wrap}.filters{display:flex;gap:12px;align-items:end;flex-wrap:wrap}.field{display:flex;flex-direction:column;gap:5px;min-width:145px;flex:1}.field.wide{flex:2;min-width:225px}label{font-size:13px;color:#d2e2fa;font-weight:600}input,select{background:#101a2c;border:1px solid #536682;color:#f2f7ff;border-radius:8px;padding:10px 11px;min-width:0;width:100%}input:focus,select:focus{outline:2px solid #82cdea;outline-offset:1px}.filter-buttons{display:flex;align-items:end;gap:9px;flex-wrap:wrap}.summary{color:#b6cbe4}.table-scroller{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:14px;white-space:nowrap}th{text-align:left;color:#a2d8f6;border-bottom:2px solid #435570;padding:12px 10px}td{border-bottom:1px solid #34415a;padding:12px 10px}tr:hover td{background:#202f48}.actions{display:flex;gap:6px;align-items:center}.actions form{margin:0}.pill{display:inline-block;padding:3px 9px;border-radius:20px;background:#264739;color:#9df1ba;font-size:12px;font-weight:700}.pill.archived{background:#564031;color:#ffd8a0}.notice{padding:11px 14px;border-radius:8px;margin-top:14px}.notice.success{background:#1d4639;color:#c4ffe4}.notice.error{background:#5a2832;color:#ffd6da}.pages{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}.pages a,.pages span{padding:5px 10px;border-radius:7px;background:#2d3b53;text-decoration:none}.pages span.current{background:#83c9ed;color:#0a1b2d;font-weight:bold}.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:17px}.form-actions{display:flex;gap:12px;margin-top:20px;flex-wrap:wrap}.help{color:#b5c6dd;font-size:13px;margin:5px 0}.error-list{background:#552a35;color:#ffe0e0;border-radius:8px;padding:14px 32px}.empty{text-align:center;padding:27px;color:#aebed4}.footnote{font-size:12px;color:#9db4d1;margin-top:17px}@media(max-width:700px){.form-grid{grid-template-columns:1fr}.shell{padding:0 12px}.hero{padding:18px}.filters{display:block}.field{margin-bottom:10px}.filter-buttons{margin-top:12px}}
+/* Event Management specific additions - shares Practical 11 dark theme. */
+input[type="date"],input[type="file"],textarea{width:100%;background:#10182a;color:#eff6ff;border:1px solid #52627d;border-radius:8px;padding:12px;font:inherit;min-height:44px}
+textarea{resize:vertical}
+.filters{display:grid;grid-template-columns:minmax(220px,1.5fr) minmax(150px,1fr) minmax(130px,1fr) minmax(130px,1fr) auto}
+.form-panel{max-width:960px}
+.form-grid .full{grid-column:1/-1}
+.poster-thumb{width:100px;height:68px;max-width:none;object-fit:cover;border-radius:8px;border:1px solid #52627d}
+.poster-placeholder{display:flex;justify-content:center;align-items:center;width:100px;height:68px;border-radius:8px;background:#2b3954;color:#a8bad1;font-size:12px;text-align:center}
+.poster-current{display:grid;gap:12px;max-width:340px;margin-top:18px}
+.poster-current img{width:100%;max-height:240px;object-fit:contain;background:#10192b;border-radius:8px}
+.checkbox{display:flex;gap:10px;align-items:center;font-size:14px}
+.checkbox input{width:auto!important;min-height:0!important}
+.actions{display:flex;gap:6px;align-items:center;flex-wrap:wrap;min-width:168px}
+.actions form{margin:0}
+.tiny{padding:7px 9px!important;font-size:12px!important;line-height:1.3!important}
+.pill{display:inline-block;border-radius:20px;padding:5px 9px;font-size:12px;font-weight:bold;margin:2px}
+.pill.open{background:#254b3d;color:#a8fad2}.pill.closed{background:#5a3a2a;color:#ffccad}.pill.archived{background:#443649;color:#e9c3fa}
+.table-scroller{overflow-x:auto}
+.table-scroller table{min-width:900px}
+.table-scroller td small{display:block;color:#a8b9d0;margin-top:6px}
+.pagination{display:flex;gap:8px;align-items:center;margin:18px 0}
+.pagination a{padding:8px 12px;background:#34445e;color:#cceaff;text-decoration:none;border-radius:7px}
+.pagination a.current{background:#92cbe5;color:#0b2234}
+.notice ul{margin:10px 0}
+@media(max-width:1050px){.filters{display:grid;grid-template-columns:1fr 1fr}.field.wide{grid-column:1/-1}.filter-buttons{grid-column:1/-1}}
+@media(max-width:680px){.filters{display:block}.form-grid{grid-template-columns:1fr}.form-grid .full{grid-column:auto}}
