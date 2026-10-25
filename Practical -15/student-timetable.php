@@ -1,0 +1,6 @@
+<?php
+/** Student-only gateway for a legacy demonstration page. */
+declare(strict_types=1);
+require_once __DIR__.'/auth.php';
+requireLogin('student');
+?><!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Timetable | Lumiora</title><link rel="stylesheet" href="integration-style.css"></head><body><div class="portal-shell"><header class="portal-header"><a class="portal-brand" href="student-dashboard.php"><span class="brand-tile">L</span><span>Lumiora<small>Student Workspace · Timetable</small></span></a><nav><a href="student-dashboard.php">← Student dashboard</a><a href="portal.php">Portal</a></nav></header><main><section class="portal-hero"><div><p class="eyebrow">STUDENT WORKSPACE · ROLE PROTECTED</p><h1>Timetable<span class="accent">.</span></h1><p>Your student role was verified by the server. Open the original Semester 3 demonstration page below; it uses static content, not private database records.</p><div class="portal-actions"><a class="button-primary" href="timetable.html">View Timetable demo →</a><a class="button-secondary" href="student-dashboard.php">Back to dashboard</a></div></div></section></main></div></body></html>

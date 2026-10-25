@@ -1,0 +1,22 @@
+# Local settings, private credentials and uploaded user material
+.env
+.env.*
+!.env.example
+/vendor/
+/node_modules/
+/.vscode/
+/.idea/
+*.log
+*.bak
+*.tmp
+*.swp
+# Preserve the original non-executable folder guards but never commit actual uploads
+/event-posters/*
+!/event-posters/.htaccess
+!/event-posters/index.html
+/database/backups/
+/submission/private/
+/screenshots/*.png
+/screenshots/*.jpg
+/screenshots/*.jpeg
+/screenshots/*.webp

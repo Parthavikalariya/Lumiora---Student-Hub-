@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Events - Lumiora Student Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="page-events">   
+    <header>
+        <div class="logo-area">
+            <img src="logo.png" alt="Lumiora Logo">
+                <div class="logo-text">
+                <h1>Lumiora</h1>
+                <p><b>Light + Growth = Learning with Brilliance</b></p>
+            </div>
+        </div>
+
+        <nav id="navbar">
+            <a href="home.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="profile.html">Profile</a>
+            <a href="login.html">Login</a>
+        </nav>
+
+        <button id="themeToggle" class="theme-toggle">
+            🌙 Dark Mode
+        </button>
+
+        <button id="hamburger" class="hamburger">
+            ☰
+        </button>
+
+    </header>
+
+    <main class="events-container">
+        <div class="dashboard">
+
+            <aside class="sidebar">
+                <h2>Menu</h2>
+                <ul>
+                    <li><a href="student-dashboard.php">🏠 Dashboard</a></li>
+                    <li><a href="profile.html">👤 Profile</a></li>
+                    <li><a href="timetable.html">📅 Time Table</a></li>
+                    <li><a href="attendance.html">✅ Attendance</a></li>
+                    <li><a href="event.html">🎤 Events</a></li>
+                    <li><a href="database-demo.php">🗄️ MySQL Database (P8)</a></li>
+                    <li><a href="studymaterial.html">📚 Study Material</a></li>
+                    <li><a href="planner.html">📝 Study Planner</a></li>
+                    <li><a href="helpdesk.html">🎧 Help Desk</a></li>
+                    <li><a href="logout.html">🚪 Logout</a></li>
+                </ul>
+            </aside>
+
+            <section class="events-heading">
+                <h2>College Events</h2>
+                <p>Explore upcoming technical, cultural, sports and workshop events.</p>
+            </section>
+
+            <section class="event-controls">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search events..."
+                    aria-label="Search events">
+
+                <select
+                    id="categoryFilter"
+                    aria-label="Filter events by category">
+
+                    <option value="all">
+                        All Categories
+                    </option>
+
+                    <option value="Technical">
+                        Technical
+                    </option>
+
+                    <option value="Cultural">
+                        Cultural
+                    </option>
+
+                    <option value="Workshop">
+                        Workshop
+                    </option>
+
+                    <option value="Sports">
+                        Sports
+                    </option>
+                </select>
+
+                <select
+                    id="sortSelect"
+                    aria-label="Sort events">
+
+                    <option value="date-asc">
+                        Date: Oldest First
+                    </option>
+
+                    <option value="date-desc">
+                        Date: Newest First
+                    </option>
+
+                    <option value="title-asc">
+                        Title: A-Z
+                    </option>
+
+                    <option value="title-desc">
+                        Title: Z-A
+                    </option>
+                </select>
+            </section>
+
+            <div class="event-info">
+
+                <p id="eventCount">
+                    Loading events...
+                </p>
+
+            </div>
+
+            <section
+                id="eventsContainer"
+                class="events-grid"
+                aria-live="polite">              
+            </section>
+
+            <div
+                id="noResults"
+                class="no-results">
+                <h3>No Events Found</h3>
+                <p>Try changing your search or filter.</p>
+            </div>
+
+            <div
+                id="pagination"
+                class="pagination">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer">
+            <h2>Lumiora</h2>
+            <p> © 2026 Lumiora. All Rights Reserved. </p>
+        </div>
+    </footer>
+    
+    <script src="script.js"></script>
+
+</body>
+
+</html>

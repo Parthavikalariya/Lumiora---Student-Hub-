@@ -1,0 +1,9 @@
+digraph ER {
+ graph [rankdir=LR, bgcolor="#ffffff", pad=.4, nodesep=.8, ranksep=1.2, label="StudentHub ER Model — Practical 8", labelloc=t, fontsize=23, fontname="Arial", fontcolor="#16365a"];
+ node [shape=plaintext, fontname="Arial"];
+ students [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="9" BGCOLOR="#EAF4FF"><TR><TD BGCOLOR="#1B4775"><FONT COLOR="white"><B>STUDENTS</B></FONT></TD></TR><TR><TD ALIGN="LEFT">PK  student_id</TD></TR><TR><TD ALIGN="LEFT">UQ  enrollment_no</TD></TR><TR><TD ALIGN="LEFT">UQ  email</TD></TR><TR><TD ALIGN="LEFT">full_name</TD></TR><TR><TD ALIGN="LEFT">course, semester</TD></TR></TABLE>>];
+ events [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="9" BGCOLOR="#EAF4FF"><TR><TD BGCOLOR="#1B4775"><FONT COLOR="white"><B>EVENTS</B></FONT></TD></TR><TR><TD ALIGN="LEFT">PK  event_id</TD></TR><TR><TD ALIGN="LEFT">event_name</TD></TR><TR><TD ALIGN="LEFT">category, event_date</TD></TR><TR><TD ALIGN="LEFT">venue, description</TD></TR></TABLE>>];
+ regs [label=<<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="9" BGCOLOR="#EDF8F3"><TR><TD BGCOLOR="#236D56"><FONT COLOR="white"><B>EVENT_REGISTRATIONS</B></FONT></TD></TR><TR><TD ALIGN="LEFT">PK  registration_id</TD></TR><TR><TD ALIGN="LEFT">FK  student_id</TD></TR><TR><TD ALIGN="LEFT">FK  event_id</TD></TR><TR><TD ALIGN="LEFT">registered_at</TD></TR><TR><TD ALIGN="LEFT">UQ  (student_id, event_id)</TD></TR></TABLE>>];
+ students -> regs [label="1 to many", fontsize=12, color="#397AA7", penwidth=2];
+ events -> regs [label="1 to many", fontsize=12, color="#397AA7", penwidth=2];
+}
